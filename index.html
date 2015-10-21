@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app='quoteBook'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Document</title>
+  <link rel='stylesheet' href='style.css'>
+</head>
+<body ng-controller='mainCtrl'>
+  <div ng-repeat='quote in quotes | filter: searchSubmit'>
+    <p>{{quote.text}}
+      <br>- {{quote.author}}
+    </p>
+  </div>
+  <div>
+   
+    <h4 ng-click='showAdd()'>ADD QUOTE</h4>
+    <div class='userInput' ng-show='addQuoteClicked'>
+      <input ng-model='inputAddQuote' placeholder='Quote' />
+      <input ng-model='inputAddAuthor' placeholder='Author' />
+      <br><button ng-click='addQuote(inputAddQuote, inputAddAuthor)'>Add</button>
+    </div>
+    
+    <h4 ng-click='showRemove()'>REMOVE QUOTE</h4>
+    <div class='userInput' ng-show='removeQuoteClicked'>
+      <input ng-model='inputRemoveQuote' placeholder='Remove Quote' />
+      <br><button ng-click='removeQuote(inputRemoveQuote)'>Remove</button>
+    </div>
+    
+    <h4 ng-click='showSearch()'>SEARCH FOR QUOTE</h4>
+    <div class='userInput' ng-show='searchQuoteClicked'>
+      <input ng-model='inputSearch' placeholder='Search Quotes' />
+      <br><button ng-click='search()'>Search</button>
+    </div>
+    
+  </div>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js'></script>
+  <script src='js/app.js'></script>
+  <script src='js/dataService.js'></script>
+  <script src='js/mainCtrl.js'></script>
+</body>
+</html>
